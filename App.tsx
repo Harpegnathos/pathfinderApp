@@ -21,6 +21,7 @@ export default function App() {
             id: spell._id,
             name: spell.name,
             spellCategory: spell.system.category.value,
+            level: spell.system.level.value,
             traits: spell.system.traits.value,
             traditions: spell.system.traditions.value,
             castTime: spell.system.time.value,
@@ -39,7 +40,7 @@ export default function App() {
                                     {item.name}
                                 </Text>
                                 <Text style={styles.previewBoxHeader}>
-                                    {item.spellCategory}
+                                    {item.spellCategory} {item.level}
                                 </Text>
                             </View>
                         </View>
@@ -58,15 +59,19 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingTop: 60,
         paddingHorizontal: 20,
+        width: '100%',
     },
     previewBoxBanner: {
         flexDirection: 'row',
+        justifyContent: 'space-between',
         padding: 10,
         backgroundColor: 'pink',
     },
     previewBoxHeader: {
         backgroundColor: '#80d9d9',
-        fontSize: 24,
+        fontSize: 20,
+        maxWidth: '70%',
+        textTransform: 'uppercase',
     },
     previewBox: {
         backgroundColor: 'red',
