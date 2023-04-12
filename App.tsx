@@ -9,21 +9,24 @@ export default function App() {
     const spells = spellList.results.map((spell: ISpell) => {
         const componentArray = [];
         if (spell.system.components.material) {
-            componentArray.push('Material');
+            componentArray.push('material');
         }
         if (spell.system.components.somatic) {
-            componentArray.push('Somatic');
+            componentArray.push('somatic');
         }
         if (spell.system.components.verbal) {
-            componentArray.push('Verbal');
+            componentArray.push('verbal');
         }
+
+        // const splitTraits = spell.system.traits.value;
+
         return {
             id: spell._id,
             name: spell.name,
             spellCategory: spell.system.category.value,
             level: spell.system.level.value,
             traits: spell.system.traits.value,
-            traditions: spell.system.traditions.value,
+            traditions: spell.system.traditions.value.join(', '),
             castTime: spell.system.time.value,
             components: componentArray.join(', '),
         };
@@ -41,6 +44,23 @@ export default function App() {
                                 </Text>
                                 <Text style={styles.previewBoxHeader}>
                                     {item.spellCategory} {item.level}
+                                </Text>
+                            </View>
+                            <View style={styles.previewBoxBody}>
+                                <View style={styles.traitContainer}>
+                                    {item.traits.map((trait, index) => {
+                                        return (
+                                            <Text
+                                                key={index}
+                                                style={styles.traitBoxes}
+                                            >
+                                                {trait}
+                                            </Text>
+                                        );
+                                    })}
+                                </View>
+                                <Text>
+                                    Cast {item.castTime} {item.components}
                                 </Text>
                             </View>
                         </View>
@@ -61,6 +81,12 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         width: '100%',
     },
+    previewBox: {
+        backgroundColor: 'red',
+        padding: 10,
+        borderRadius: 10,
+        marginBottom: 20,
+    },
     previewBoxBanner: {
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -73,10 +99,23 @@ const styles = StyleSheet.create({
         maxWidth: '70%',
         textTransform: 'uppercase',
     },
-    previewBox: {
-        backgroundColor: 'red',
-        padding: 10,
-        borderRadius: 10,
-        marginBottom: 20,
+    previewBoxBody: {
+        backgroundColor: 'white',
+    },
+    traitContainer: {
+        display: 'flex',
+        flex: 1,
+        flexWrap: 'wrap',
+        flexDirection: 'row',
+        gap: 5,
+    },
+    traitBoxes: {
+        backgroundColor: '#751000',
+        borderColor: '#e6cb47',
+        borderWidth: 3,
+        textTransform: 'uppercase',
+        color: 'white',
+        paddingHorizontal: 5,
+        paddingVertical: 3,
     },
 });
