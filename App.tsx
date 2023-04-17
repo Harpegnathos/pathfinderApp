@@ -1,12 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
-// import { TileViewer } from './components/tileViewer';
+import { Text, View, ScrollView } from 'react-native';
+import { styles } from './App.styles';
 import * as spellList from './jsons/spells.json';
 import { ISpell } from './interfaces/iSpell';
+import { CastTime } from './components/castTime';
 
 export default function App() {
-    const spells = spellList.results.map((spell: ISpell) => {
+    const spells = (spellList as any).results.map((spell: ISpell) => {
         const componentArray = [];
         if (spell.system.components.material) {
             componentArray.push('material');
@@ -17,8 +16,6 @@ export default function App() {
         if (spell.system.components.verbal) {
             componentArray.push('verbal');
         }
-
-        // const splitTraits = spell.system.traits.value;
 
         return {
             id: spell._id,
@@ -43,9 +40,10 @@ export default function App() {
                                     {item.name}
                                 </Text>
                                 <Text style={styles.previewBoxHeader}>
-                                    {item.spellCategory} {item.level}
+                                    {`${item.spellCategory} ${item.level}`}
                                 </Text>
                             </View>
+                            <View style={styles.dividerLine}></View>
                             <View style={styles.previewBoxBody}>
                                 <View style={styles.traitContainer}>
                                     {item.traits.map((trait, index) => {
@@ -60,7 +58,9 @@ export default function App() {
                                     })}
                                 </View>
                                 <Text>
-                                    Cast {item.castTime} {item.components}
+                                    <Text style={styles.textBold}>Cast </Text>
+                                    <CastTime castTimeValue={item.castTime} />
+                                    {` ${item.components}`}
                                 </Text>
                             </View>
                         </View>
@@ -70,52 +70,3 @@ export default function App() {
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    previewContainer: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingTop: 60,
-        paddingHorizontal: 20,
-        width: '100%',
-    },
-    previewBox: {
-        backgroundColor: 'red',
-        padding: 10,
-        borderRadius: 10,
-        marginBottom: 20,
-    },
-    previewBoxBanner: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        padding: 10,
-        backgroundColor: 'pink',
-    },
-    previewBoxHeader: {
-        backgroundColor: '#80d9d9',
-        fontSize: 20,
-        maxWidth: '70%',
-        textTransform: 'uppercase',
-    },
-    previewBoxBody: {
-        backgroundColor: 'white',
-    },
-    traitContainer: {
-        display: 'flex',
-        flex: 1,
-        flexWrap: 'wrap',
-        flexDirection: 'row',
-        gap: 5,
-    },
-    traitBoxes: {
-        backgroundColor: '#751000',
-        borderColor: '#e6cb47',
-        borderWidth: 3,
-        textTransform: 'uppercase',
-        color: 'white',
-        paddingHorizontal: 5,
-        paddingVertical: 3,
-    },
-});
