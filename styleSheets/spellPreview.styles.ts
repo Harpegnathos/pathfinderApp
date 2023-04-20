@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingTop: 60,
-        paddingHorizontal: 20,
+        paddingHorizontal: 10,
         width: '100%',
     },
     previewBox: {
@@ -23,10 +23,8 @@ const styles = StyleSheet.create({
     previewBoxBanner: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        // backgroundColor: 'pink',
     },
     previewBoxHeader: {
-        // backgroundColor: '#80d9d9',
         fontSize: 20,
         maxWidth: '70%',
         textTransform: 'uppercase',
@@ -36,19 +34,18 @@ const styles = StyleSheet.create({
         borderBottomColor: 'black',
         borderBottomWidth: 2,
     },
-    previewBoxBody: {
-        // backgroundColor: 'white',
-    },
+    previewBoxBody: {},
     traitContainer: {
         display: 'flex',
         flex: 1,
         flexWrap: 'wrap',
         flexDirection: 'row',
         gap: 5,
+        paddingVertical: 3,
     },
     traitBoxes: {
         backgroundColor: '#751000',
-        borderColor: '#e6cb47',
+        borderColor: '#c79c02',
         borderWidth: 3,
         textTransform: 'uppercase',
         color: 'white',
