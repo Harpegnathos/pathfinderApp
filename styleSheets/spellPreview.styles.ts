@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         maxWidth: '70%',
         textTransform: 'uppercase',
-        fontFamily: 'AvenirNextCondensed-Bold',
+        fontFamily: 'headerFont',
     },
     dividerLine: {
         borderBottomColor: 'black',
