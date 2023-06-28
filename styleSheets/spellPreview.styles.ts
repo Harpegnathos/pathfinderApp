@@ -48,9 +48,10 @@ const styles = StyleSheet.create({
         borderColor: '#c79c02',
         borderWidth: 3,
         textTransform: 'uppercase',
+        textAlign: 'center',
         color: 'white',
         paddingHorizontal: 5,
-        paddingVertical: 3,
+        paddingTop: 3,
     },
     textBold: {
         fontWeight: 'bold',
