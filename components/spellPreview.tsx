@@ -3,9 +3,8 @@ import { View, ScrollView, Pressable, Text } from 'react-native';
 import { spells } from './spellList';
 import { styles } from '../styleSheets/spellPreview.styles';
 import { CastTime } from './castTime';
-import { SpellDetailsCard } from './spellDetailsCard';
 
-function SpellPreview({ myModalFunc }) {
+function SpellPreview({ myModalFunc, setSpellID }) {
     return (
         <>
             <View style={styles.previewContainer}>
@@ -15,7 +14,8 @@ function SpellPreview({ myModalFunc }) {
                             <Pressable
                                 key={index}
                                 onPress={() => {
-                                    console.log(item.name, index);
+                                    setSpellID(item.id);
+                                    console.log(item.name, item.id);
                                     myModalFunc(true);
                                 }}
                             >
