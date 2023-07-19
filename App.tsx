@@ -5,6 +5,7 @@ import { SpellPreview } from './components/spellPreview';
 import { SpellDetailsCard } from './components/spellDetailsCard';
 import { SafeAreaView, View } from 'react-native';
 import { styles } from './styleSheets/homePage.styles';
+import { connect } from './utilities/mongodb';
 
 export default function App() {
     const [modalOpen, setModalOpen] = useState(false);
@@ -17,6 +18,8 @@ export default function App() {
     if (!fontsLoaded) {
         return null;
     }
+
+    connect();
 
     console.log('spellID in app', spellID);
 
