@@ -20,9 +20,9 @@ function SpellDetailsCard({ displayModal, myModalFunc, spellID }) {
                     />
                     <View style={styles.previewContainer}>
                         <ScrollView>
-                            {spells.map((item) => {
+                            {spells.map((item, index) => {
                                 return (
-                                    <View style={styles.previewBox}>
+                                    <View style={styles.previewBox} key={index}>
                                         <View style={styles.previewBoxBanner}>
                                             <Text
                                                 style={styles.previewBoxHeader}

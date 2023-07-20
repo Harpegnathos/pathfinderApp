@@ -1,7 +1,7 @@
 import * as spellList from '../jsons/spells.json';
 import { ISpell } from '../interfaces/iSpell';
 
-const spells = (spellList as any).results.map((spell: ISpell) => {
+const spells = (spellList as any).spells.map((spell: ISpell) => {
     const componentArray = [];
     if (spell.system.components.material) {
         componentArray.push('material');
