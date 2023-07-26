@@ -5,6 +5,15 @@ const styles = StyleSheet.create({
         paddingTop: 25,
         flex: 1,
     },
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+    },
+    horizontal: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        padding: 10,
+    },
 });
 
 export { styles };

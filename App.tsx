@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useFonts } from 'expo-font';
-import { FilterBar } from './components/filterBar';
 import { SpellPreview } from './components/spellPreview';
 import { SpellDetailsCard } from './components/spellDetailsCard';
-import { SafeAreaView, View } from 'react-native';
+import { ActivityIndicator, SafeAreaView, View } from 'react-native';
 import { styles } from './styleSheets/homePage.styles';
-import { connect } from './utilities/mongodb';
+import { mapSpells } from './utilities/mapSpells';
+import { getAllSpells } from './utilities/dataHelper';
 
 export default function App() {
     const [modalOpen, setModalOpen] = useState(false);
@@ -15,11 +15,29 @@ export default function App() {
         headerFont: require('./assets/fonts/Avenir-Next-Condensed-Bold.ttf'),
     });
 
-    if (!fontsLoaded) {
-        return null;
-    }
+    const [spells, setSpells] = useState([]);
 
-    connect();
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const fullSpellList = await getAllSpells();
+                const mappedSpells = mapSpells(fullSpellList);
+                setSpells(mappedSpells);
+            } catch (e) {
+                console.error(e);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    if (!fontsLoaded || spells.length === 0) {
+        return (
+            <View style={[styles.container, styles.horizontal]}>
+                <ActivityIndicator size="large" color="#751000" />
+            </View>
+        );
+    }
 
     console.log('spellID in app', spellID);
 
@@ -31,10 +49,10 @@ export default function App() {
                     myModalFunc={setModalOpen}
                     spellID={spellID}
                 />
-                {/* <FilterBar /> */}
                 <SpellPreview
                     myModalFunc={setModalOpen}
                     setSpellID={setSpellID}
+                    spellList={spells}
                 />
             </SafeAreaView>
         </>

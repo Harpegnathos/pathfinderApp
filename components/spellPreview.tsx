@@ -1,15 +1,14 @@
 import { useState } from 'react';
 import { View, ScrollView, Pressable, Text } from 'react-native';
-import { spells } from './spellList';
 import { styles } from '../styleSheets/spellPreview.styles';
 import { CastTime } from './castTime';
 
-function SpellPreview({ myModalFunc, setSpellID }) {
+function SpellPreview({ myModalFunc, setSpellID, spellList }) {
     return (
         <>
             <View style={styles.previewContainer}>
                 <ScrollView>
-                    {spells.map((item, index) => {
+                    {spellList.map((item, index) => {
                         return (
                             <Pressable
                                 key={index}
