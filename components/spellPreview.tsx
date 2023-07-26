@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { View, ScrollView, Pressable, Text } from 'react-native';
 import { styles } from '../styleSheets/spellPreview.styles';
 import { CastTime } from './castTime';

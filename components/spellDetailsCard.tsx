@@ -1,11 +1,10 @@
 import { Modal, View, Text, ScrollView } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
-import { spells } from './spellList';
 import { CastTime } from './castTime';
 import { styles } from '../styleSheets/spellPreview.styles';
 
-function SpellDetailsCard({ displayModal, myModalFunc, spellID }) {
+function SpellDetailsCard({ displayModal, myModalFunc, spellID, spellList }) {
     console.log('spellID in SpellDetailsCard', spellID);
     return (
         <Modal visible={displayModal} animationType="fade" transparent={true}>
@@ -20,7 +19,7 @@ function SpellDetailsCard({ displayModal, myModalFunc, spellID }) {
                     />
                     <View style={styles.previewContainer}>
                         <ScrollView>
-                            {spells.map((item, index) => {
+                            {spellList.map((item, index) => {
                                 return (
                                     <View style={styles.previewBox} key={index}>
                                         <View style={styles.previewBoxBanner}>

@@ -6,7 +6,7 @@ async function getAllSpells() {
     console.log(uri);
     const response = await fetch(`${uri}/api/getAllSpells`);
     const fullSpellList = await response.json();
-    console.log(fullSpellList);
+    console.log(fullSpellList[0]);
     return fullSpellList;
 }
 

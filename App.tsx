@@ -48,6 +48,7 @@ export default function App() {
                     displayModal={modalOpen}
                     myModalFunc={setModalOpen}
                     spellID={spellID}
+                    spellList={spells}
                 />
                 <SpellPreview
                     myModalFunc={setModalOpen}
