@@ -14,4 +14,25 @@ async function getAllCharacters() {
     return result;
 }
 
-export { getAllSpells, getAllCharacters };
+async function createCharacter(name) {
+    const data = {
+        name: name,
+        spellList: [],
+    };
+    let result;
+    try {
+        const response = await fetch(`${uri}/api/createCharacter`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+        result = await response.json();
+    } catch (e) {
+        console.error(e);
+    }
+    return result;
+}
+
+export { getAllSpells, getAllCharacters, createCharacter };

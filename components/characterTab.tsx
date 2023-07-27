@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Pressable } from 'react-native';
+import { View, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import SelectDropdown from 'react-native-select-dropdown';
 import { styles } from '../styleSheets/characterTab.styles';
