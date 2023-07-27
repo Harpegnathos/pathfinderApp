@@ -53,6 +53,11 @@ const styles = StyleSheet.create({
         paddingHorizontal: 5,
         paddingTop: 3,
     },
+    textBox: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
     textBold: {
         fontWeight: 'bold',
     },

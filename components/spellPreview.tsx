@@ -1,4 +1,5 @@
 import { View, ScrollView, Pressable, Text } from 'react-native';
+import { MaterialIcons, Octicons } from '@expo/vector-icons';
 import { styles } from '../styleSheets/spellPreview.styles';
 import { CastTime } from './castTime';
 
@@ -9,15 +10,16 @@ function SpellPreview({ myModalFunc, setSpellID, spellList }) {
                 <ScrollView>
                     {spellList.map((item, index) => {
                         return (
-                            <Pressable
-                                key={index}
-                                onPress={() => {
-                                    setSpellID(item.id);
-                                    console.log(item.name, item.id);
-                                    myModalFunc(true);
-                                }}
-                            >
-                                <View style={styles.previewBox}>
+                            <>
+                                {/* <Pressable
+                                    key={index}
+                                    onPress={() => {
+                                        setSpellID(item.id);
+                                        console.log(item.name, item.id);
+                                        myModalFunc(true);
+                                    }}
+                                > */}
+                                <View style={styles.previewBox} key={index}>
                                     <View style={styles.previewBoxBanner}>
                                         <Text style={styles.previewBoxHeader}>
                                             {item.name}
@@ -44,18 +46,38 @@ function SpellPreview({ myModalFunc, setSpellID, spellList }) {
                                                 }
                                             )}
                                         </View>
-                                        <Text>
-                                            <Text style={styles.textBold}>
-                                                Cast{' '}
+                                        <View style={styles.textBox}>
+                                            <Text>
+                                                <Text style={styles.textBold}>
+                                                    Cast{' '}
+                                                </Text>
+                                                <CastTime
+                                                    castTimeValue={
+                                                        item.castTime
+                                                    }
+                                                />
+                                                {` ${item.components}`}
                                             </Text>
-                                            <CastTime
-                                                castTimeValue={item.castTime}
-                                            />
-                                            {` ${item.components}`}
-                                        </Text>
+                                            <Pressable
+                                                onPress={() => {
+                                                    setSpellID(item.id);
+                                                    console.log(
+                                                        item.name,
+                                                        item.id
+                                                    );
+                                                    myModalFunc(true);
+                                                }}
+                                            >
+                                                <Octicons
+                                                    name="diff-added"
+                                                    size={24}
+                                                />
+                                            </Pressable>
+                                        </View>
                                     </View>
                                 </View>
-                            </Pressable>
+                                {/* </Pressable> */}
+                            </>
                         );
                     })}
                 </ScrollView>
