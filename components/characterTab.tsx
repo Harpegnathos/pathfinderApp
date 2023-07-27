@@ -5,8 +5,8 @@ import { styles } from '../styleSheets/characterTab.styles';
 import { useState } from 'react';
 import { CharacterCreator } from './CharacterCreator';
 
-function CharacterTab() {
-    const characters = ['Alecto', 'Talonien', 'Elva', 'Granny', 'Zorty'];
+function CharacterTab({ characters }) {
+    console.log(characters);
     const [selectedCharacterID, setselectedCharacterID] = useState('');
 
     const [isModalDisplayed, setIsModalDisplayed] = useState(false);
@@ -18,6 +18,9 @@ function CharacterTab() {
             <View style={styles.characterContainer}>
                 <SelectDropdown
                     data={characters}
+                    rowTextForSelection={(item, index) => {
+                        return item.name;
+                    }}
                     onSelect={(selectedItem) => {
                         setselectedCharacterID(selectedItem);
                     }}

@@ -6,7 +6,7 @@ import { SpellDetailsCard } from './components/spellDetailsCard';
 import { ActivityIndicator, SafeAreaView, View } from 'react-native';
 import { styles } from './styleSheets/homePage.styles';
 import { mapSpells } from './utilities/mapSpells';
-import { getAllSpells } from './utilities/dataHelper';
+import { getAllCharacters, getAllSpells } from './utilities/dataHelper';
 
 export default function App() {
     const [modalOpen, setModalOpen] = useState(false);
@@ -17,6 +17,7 @@ export default function App() {
     });
 
     const [spells, setSpells] = useState([]);
+    const [characters, setCharacters] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -24,6 +25,9 @@ export default function App() {
                 const fullSpellList = await getAllSpells();
                 const mappedSpells = mapSpells(fullSpellList);
                 setSpells(mappedSpells);
+
+                const characterList = await getAllCharacters();
+                setCharacters(characterList);
             } catch (e) {
                 console.error(e);
             }
@@ -45,7 +49,7 @@ export default function App() {
     return (
         <>
             <SafeAreaView style={styles.safeView}>
-                <CharacterTab />
+                <CharacterTab characters={characters} />
                 <SpellDetailsCard
                     displayModal={modalOpen}
                     myModalFunc={setModalOpen}
