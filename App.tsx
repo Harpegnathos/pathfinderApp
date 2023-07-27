@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useFonts } from 'expo-font';
+import { CharacterTab } from './components/characterTab';
 import { SpellPreview } from './components/spellPreview';
 import { SpellDetailsCard } from './components/spellDetailsCard';
 import { ActivityIndicator, SafeAreaView, View } from 'react-native';
@@ -44,6 +45,7 @@ export default function App() {
     return (
         <>
             <SafeAreaView style={styles.safeView}>
+                <CharacterTab />
                 <SpellDetailsCard
                     displayModal={modalOpen}
                     myModalFunc={setModalOpen}
