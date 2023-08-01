@@ -20,8 +20,11 @@ function CharacterTab({ characters }) {
                     rowTextForSelection={(item, index) => {
                         return item.name;
                     }}
-                    onSelect={(selectedItem) => {
-                        setselectedCharacterID(selectedItem);
+                    onSelect={(item) => {
+                        setselectedCharacterID(item._id);
+                    }}
+                    buttonTextAfterSelection={(item, index) => {
+                        return item.name;
                     }}
                     defaultButtonText="select a character"
                     buttonStyle={styles.characterSelector}
