@@ -44,8 +44,6 @@ export default function App() {
         );
     }
 
-    console.log('spellID in app', spellID);
-
     return (
         <>
             <SafeAreaView style={styles.safeView}>

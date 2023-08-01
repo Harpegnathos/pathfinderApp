@@ -6,7 +6,6 @@ import { useState } from 'react';
 import { CharacterCreator } from './CharacterCreator';
 
 function CharacterTab({ characters }) {
-    console.log(characters);
     const [selectedCharacterID, setselectedCharacterID] = useState('');
 
     const [isModalDisplayed, setIsModalDisplayed] = useState(false);
@@ -31,8 +30,6 @@ function CharacterTab({ characters }) {
                     style={styles.iconBox}
                     onPress={() => {
                         setIsModalDisplayed(true);
-                        console.log('pressed character creation button');
-                        console.log(isModalDisplayed);
                     }}
                 >
                     <Ionicons

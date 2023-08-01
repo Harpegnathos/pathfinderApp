@@ -5,7 +5,6 @@ import { CastTime } from './castTime';
 import { styles } from '../styleSheets/spellPreview.styles';
 
 function SpellDetailsCard({ displayModal, myModalFunc, spellID, spellList }) {
-    console.log('spellID in SpellDetailsCard', spellID);
     return (
         <Modal visible={displayModal} animationType="fade" transparent={true}>
             <BlurView intensity={50} tint="dark" style={styles.backgroundTint}>

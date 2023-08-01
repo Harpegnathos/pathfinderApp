@@ -15,7 +15,6 @@ function SpellPreview({ myModalFunc, setSpellID, spellList }) {
                                     key={index}
                                     onPress={() => {
                                         setSpellID(item.id);
-                                        console.log(item.name, item.id);
                                         myModalFunc(true);
                                     }}
                                 > */}
@@ -61,10 +60,6 @@ function SpellPreview({ myModalFunc, setSpellID, spellList }) {
                                             <Pressable
                                                 onPress={() => {
                                                     setSpellID(item.id);
-                                                    console.log(
-                                                        item.name,
-                                                        item.id
-                                                    );
                                                     myModalFunc(true);
                                                 }}
                                             >
