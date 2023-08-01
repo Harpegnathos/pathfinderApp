@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     },
     characterSelector: {
         height: 40,
-        width: '80%',
+        width: '65%',
         borderRadius: 15,
         backgroundColor: '#fbd692',
     },
@@ -57,6 +57,16 @@ const styles = StyleSheet.create({
         margin: 12,
         borderWidth: 1,
         padding: 10,
+    },
+    deleteButton: {
+        backgroundColor: '#d40000',
+        borderRadius: 15,
+        height: 40,
+        width: 40,
+    },
+    deleteCharacterIcon: {
+        alignSelf: 'center',
+        lineHeight: 40,
     },
 });
 

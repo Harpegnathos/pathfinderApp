@@ -1,5 +1,5 @@
-import { View, Pressable } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { View, Pressable, Text } from 'react-native';
+import { Ionicons, Feather } from '@expo/vector-icons';
 import SelectDropdown from 'react-native-select-dropdown';
 import { styles } from '../styleSheets/characterTab.styles';
 import { useState } from 'react';
@@ -26,7 +26,7 @@ function CharacterTab({ characters }) {
                     buttonTextAfterSelection={(item, index) => {
                         return item.name;
                     }}
-                    defaultButtonText="select a character"
+                    defaultButtonText="select character"
                     buttonStyle={styles.characterSelector}
                 />
                 <Pressable
@@ -40,6 +40,19 @@ function CharacterTab({ characters }) {
                         size={24}
                         color="black"
                         style={styles.addCharacterIcon}
+                    />
+                </Pressable>
+                <Pressable
+                    style={styles.deleteButton}
+                    onPress={() => {
+                        setIsModalDisplayed(true);
+                    }}
+                >
+                    <Feather
+                        name="trash-2"
+                        size={24}
+                        color="white"
+                        style={styles.deleteCharacterIcon}
                     />
                 </Pressable>
                 <CharacterCreator
