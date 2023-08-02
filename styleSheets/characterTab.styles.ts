@@ -21,11 +21,29 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         elevation: 5,
     },
+    topBar: {
+        flexDirection: 'row',
+        alignItems: 'flex-end',
+    },
     createCharacterButton: {
         backgroundColor: '#fbd692',
         borderRadius: 20,
         alignSelf: 'center',
         padding: 10,
+    },
+    warningText: {
+        textAlign: 'center',
+    },
+    deleteCharacterButton: {
+        backgroundColor: '#d40000',
+        borderRadius: 20,
+        alignSelf: 'center',
+        padding: 10,
+        marginTop: 10,
+    },
+    deleteText: {
+        color: 'white',
+        fontWeight: 'bold',
     },
 
     // Element Styles

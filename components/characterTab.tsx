@@ -4,11 +4,13 @@ import SelectDropdown from 'react-native-select-dropdown';
 import { styles } from '../styleSheets/characterTab.styles';
 import { useState } from 'react';
 import { CharacterCreator } from './CharacterCreator';
+import { CharacterDeleter } from './CharacterDeleter';
 
 function CharacterTab({ characters }) {
     const [selectedCharacterID, setselectedCharacterID] = useState('');
 
     const [isModalDisplayed, setIsModalDisplayed] = useState(false);
+    const [isDeleterDisplayed, setIsDeleterDisplayed] = useState(false);
 
     console.log(`The current selected character is ${selectedCharacterID}`);
 
@@ -45,7 +47,7 @@ function CharacterTab({ characters }) {
                 <Pressable
                     style={styles.deleteButton}
                     onPress={() => {
-                        setIsModalDisplayed(true);
+                        setIsDeleterDisplayed(true);
                     }}
                 >
                     <Feather
@@ -58,6 +60,10 @@ function CharacterTab({ characters }) {
                 <CharacterCreator
                     isModalDisplayed={isModalDisplayed}
                     setIsModalDisplayed={setIsModalDisplayed}
+                />
+                <CharacterDeleter
+                    isDeleterDisplayed={isDeleterDisplayed}
+                    setIsDeleterDisplayed={setIsDeleterDisplayed}
                 />
             </View>
         </>
