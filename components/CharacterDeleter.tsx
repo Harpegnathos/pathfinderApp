@@ -3,9 +3,13 @@ import { styles } from '../styleSheets/characterTab.styles';
 import { MaterialIcons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
 import { useState } from 'react';
-import { createCharacter } from '../utilities/dataHelper';
+import { deleteCharacter } from '../utilities/dataHelper';
 
-function CharacterDeleter({ isDeleterDisplayed, setIsDeleterDisplayed }) {
+function CharacterDeleter({
+    isDeleterDisplayed,
+    setIsDeleterDisplayed,
+    selectedCharacterID,
+}) {
     const [textValue, setTextValue] = useState('');
 
     return (
@@ -35,14 +39,13 @@ function CharacterDeleter({ isDeleterDisplayed, setIsDeleterDisplayed }) {
                         </Text>
                         <Pressable
                             style={styles.deleteCharacterButton}
-                            disabled={textValue.length === 0}
                             onPress={() => {
-                                const sendCharacterName = async () => {
-                                    await createCharacter(textValue);
+                                const sendDeleteRequest = async () => {
+                                    await deleteCharacter(selectedCharacterID);
                                     setTextValue('');
                                     setIsDeleterDisplayed(false);
                                 };
-                                sendCharacterName();
+                                sendDeleteRequest();
                             }}
                         >
                             <Text style={styles.deleteText}>

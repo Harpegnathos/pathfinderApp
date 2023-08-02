@@ -33,8 +33,14 @@ function CharacterCreator({ isModalDisplayed, setIsModalDisplayed }) {
                             value={textValue}
                         />
                         <Pressable
-                            style={styles.createCharacterButton}
                             disabled={textValue.length === 0}
+                            style={{
+                                ...styles.createCharacterButton,
+                                backgroundColor:
+                                    textValue.length === 0
+                                        ? '#5e5e5e'
+                                        : '#fbd692',
+                            }}
                             onPress={() => {
                                 const sendCharacterName = async () => {
                                     await createCharacter(textValue);
@@ -44,7 +50,17 @@ function CharacterCreator({ isModalDisplayed, setIsModalDisplayed }) {
                                 sendCharacterName();
                             }}
                         >
-                            <Text>Create Character</Text>
+                            <Text
+                                style={{
+                                    ...styles.createCharacterText,
+                                    color:
+                                        textValue.length === 0
+                                            ? 'white'
+                                            : 'black',
+                                }}
+                            >
+                                Create Character
+                            </Text>
                         </Pressable>
                     </View>
                 </View>

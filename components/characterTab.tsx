@@ -1,4 +1,4 @@
-import { View, Pressable, Text } from 'react-native';
+import { View, Pressable } from 'react-native';
 import { Ionicons, Feather } from '@expo/vector-icons';
 import SelectDropdown from 'react-native-select-dropdown';
 import { styles } from '../styleSheets/characterTab.styles';
@@ -45,7 +45,12 @@ function CharacterTab({ characters }) {
                     />
                 </Pressable>
                 <Pressable
-                    style={styles.deleteButton}
+                    disabled={selectedCharacterID === ''}
+                    style={{
+                        ...styles.deleteButton,
+                        backgroundColor:
+                            selectedCharacterID === '' ? '#5e5e5e' : '#d40000',
+                    }}
                     onPress={() => {
                         setIsDeleterDisplayed(true);
                     }}
@@ -64,6 +69,7 @@ function CharacterTab({ characters }) {
                 <CharacterDeleter
                     isDeleterDisplayed={isDeleterDisplayed}
                     setIsDeleterDisplayed={setIsDeleterDisplayed}
+                    selectedCharacterID={selectedCharacterID}
                 />
             </View>
         </>

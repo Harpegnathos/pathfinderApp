@@ -35,4 +35,21 @@ async function createCharacter(name) {
     return result;
 }
 
-export { getAllSpells, getAllCharacters, createCharacter };
+async function deleteCharacter(id) {
+    let result;
+    try {
+        const response = await fetch(`${uri}/api/delete/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        result = await response.text();
+        console.log(result);
+    } catch (e) {
+        console.error(e);
+    }
+    return result;
+}
+
+export { getAllSpells, getAllCharacters, createCharacter, deleteCharacter };

@@ -41,6 +41,9 @@ const styles = StyleSheet.create({
         padding: 10,
         marginTop: 10,
     },
+    createCharacterText: {
+        fontWeight: 'bold',
+    },
     deleteText: {
         color: 'white',
         fontWeight: 'bold',
@@ -77,7 +80,6 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     deleteButton: {
-        backgroundColor: '#d40000',
         borderRadius: 15,
         height: 40,
         width: 40,
