@@ -2,6 +2,7 @@ import { View, ScrollView, Pressable, Text } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { styles } from '../styleSheets/spellPreview.styles';
 import { CastTime } from './castTime';
+import { addSpellToCharacter } from '../utilities/dataHelper';
 
 function SpellPreview({ myModalFunc, setSpellID, spellList }) {
     return (
@@ -60,6 +61,7 @@ function SpellPreview({ myModalFunc, setSpellID, spellList }) {
                                             <Pressable
                                                 onPress={() => {
                                                     setSpellID(item.id);
+                                                    // addSpellToCharacter(,item.id);
                                                     console.log(item.name);
                                                 }}
                                             >

@@ -35,6 +35,27 @@ async function createCharacter(name) {
     return result;
 }
 
+async function addSpellToCharacter(id, spellIDs) {
+    const data = {
+        spellList: spellIDs,
+    };
+    let result;
+    try {
+        const response = await fetch(`${uri}/api/patch/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+        result = await response.text();
+        console.log(result);
+    } catch (e) {
+        console.error(e);
+    }
+    return result;
+}
+
 async function deleteCharacter(id) {
     let result;
     try {
@@ -45,11 +66,16 @@ async function deleteCharacter(id) {
             },
         });
         result = await response.text();
-        console.log(result);
     } catch (e) {
         console.error(e);
     }
     return result;
 }
 
-export { getAllSpells, getAllCharacters, createCharacter, deleteCharacter };
+export {
+    getAllSpells,
+    getAllCharacters,
+    createCharacter,
+    addSpellToCharacter,
+    deleteCharacter,
+};
