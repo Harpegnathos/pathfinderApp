@@ -1,5 +1,5 @@
 import { View, ScrollView, Pressable, Text } from 'react-native';
-import { MaterialIcons, Octicons } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 import { styles } from '../styleSheets/spellPreview.styles';
 import { CastTime } from './castTime';
 
@@ -60,13 +60,22 @@ function SpellPreview({ myModalFunc, setSpellID, spellList }) {
                                             <Pressable
                                                 onPress={() => {
                                                     setSpellID(item.id);
-                                                    myModalFunc(true);
+                                                    console.log(item.name);
                                                 }}
                                             >
-                                                <Octicons
-                                                    name="diff-added"
-                                                    size={24}
-                                                />
+                                                {item.name ===
+                                                'Aberrant Form' ? (
+                                                    <Feather
+                                                        name="minus-square"
+                                                        size={24}
+                                                        color="#d40000"
+                                                    />
+                                                ) : (
+                                                    <Feather
+                                                        name="plus-square"
+                                                        size={24}
+                                                    />
+                                                )}
                                             </Pressable>
                                         </View>
                                     </View>
@@ -80,4 +89,5 @@ function SpellPreview({ myModalFunc, setSpellID, spellList }) {
         </>
     );
 }
+
 export { SpellPreview };
