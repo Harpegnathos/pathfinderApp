@@ -1,34 +1,36 @@
 {
-    "name": "pathfinderapp",
-    "version": "1.0.0",
-    "main": "node_modules/expo/AppEntry.js",
-    "scripts": {
-        "start": "expo start",
-        "android": "expo start --android",
-        "ios": "expo start --ios",
-        "web": "expo start --web"
-    },
-    "dependencies": {
-        "@types/react": "~18.0.27",
-        "@types/react-native": "^0.72.2",
-        "eslint-config-prettier": "^8.8.0",
-        "expo": "~48.0.9",
-        "expo-blur": "~12.2.2",
-        "expo-font": "~11.1.1",
-        "expo-status-bar": "~1.4.4",
-        "mongodb": "^5.7.0",
-        "prettier": "^2.8.7",
-        "react": "18.2.0",
-        "react-native": "0.71.8",
-        "react-native-select-dropdown": "^3.3.4",
-        "typescript": "^4.9.4"
-    },
-    "devDependencies": {
-        "@babel/core": "^7.20.0",
-        "@types/node": "^20.4.2",
-        "@typescript-eslint/eslint-plugin": "^5.57.0",
-        "@typescript-eslint/parser": "^5.57.0",
-        "eslint": "^8.37.0"
-    },
-    "private": true
+  "name": "pathfinderapp",
+  "version": "1.0.0",
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "1.17.11",
+    "eslint-config-prettier": "^8.8.0",
+    "expo": "~48.0.9",
+    "expo-blur": "~12.2.2",
+    "expo-font": "~11.1.1",
+    "expo-status-bar": "~1.4.4",
+    "mongodb": "^5.7.0",
+    "prettier": "^2.8.7",
+    "react": "18.2.0",
+    "react-native": "0.71.8",
+    "react-native-mmkv": "^2.10.1",
+    "react-native-select-dropdown": "^3.3.4",
+    "typescript": "^4.9.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@types/node": "^20.4.2",
+    "@types/react": "~18.0.27",
+    "@types/react-native": "^0.72.2",
+    "@typescript-eslint/eslint-plugin": "^5.57.0",
+    "@typescript-eslint/parser": "^5.57.0",
+    "eslint": "^8.37.0"
+  },
+  "private": true
 }

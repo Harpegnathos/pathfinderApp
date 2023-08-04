@@ -5,6 +5,7 @@ import { styles } from '../styleSheets/characterTab.styles';
 import { useState } from 'react';
 import { CharacterCreator } from './CharacterCreator';
 import { CharacterDeleter } from './CharacterDeleter';
+import useCharacter from '../utilities/useCharacter';
 
 function CharacterTab({ characters }) {
     const [selectedCharacterID, setselectedCharacterID] = useState('');
@@ -12,8 +13,10 @@ function CharacterTab({ characters }) {
     const [isModalDisplayed, setIsModalDisplayed] = useState(false);
     const [isDeleterDisplayed, setIsDeleterDisplayed] = useState(false);
 
-    console.log(`The current selected character is ${selectedCharacterID}`);
+    const [testChar, setTestChar] = useCharacter({});
 
+    console.log(`The current selected character is ${selectedCharacterID}`);
+    console.log(`testChar stuff`, testChar);
     return (
         <>
             <View style={styles.characterContainer}>
@@ -24,6 +27,7 @@ function CharacterTab({ characters }) {
                     }}
                     onSelect={(item) => {
                         setselectedCharacterID(item._id);
+                        setTestChar(item);
                     }}
                     buttonTextAfterSelection={(item, index) => {
                         return item.name;
