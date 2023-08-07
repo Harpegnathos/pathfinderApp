@@ -11,7 +11,7 @@ function SpellPreview({ myModalFunc, setSpellID, spellList }) {
                 <ScrollView>
                     {spellList.map((item, index) => {
                         return (
-                            <>
+                            <View key={index}>
                                 {/* <Pressable
                                     key={index}
                                     onPress={() => {
@@ -83,7 +83,7 @@ function SpellPreview({ myModalFunc, setSpellID, spellList }) {
                                     </View>
                                 </View>
                                 {/* </Pressable> */}
-                            </>
+                            </View>
                         );
                     })}
                 </ScrollView>
