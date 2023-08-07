@@ -3,11 +3,8 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
 import { CastTime } from './castTime';
 import { styles } from '../styleSheets/spellPreview.styles';
-import useCharacter from '../utilities/useCharacter';
 
 function SpellDetailsCard({ displayModal, myModalFunc, spellID, spellList }) {
-    const [testChar, setTestChar] = useCharacter({});
-    console.log(`testChar in spellPreview`, testChar);
     return (
         <Modal visible={displayModal} animationType="fade" transparent={true}>
             <BlurView intensity={50} tint="dark" style={styles.backgroundTint}>

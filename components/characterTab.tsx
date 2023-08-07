@@ -2,21 +2,21 @@ import { View, Pressable } from 'react-native';
 import { Ionicons, Feather } from '@expo/vector-icons';
 import SelectDropdown from 'react-native-select-dropdown';
 import { styles } from '../styleSheets/characterTab.styles';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { CharacterCreator } from './CharacterCreator';
 import { CharacterDeleter } from './CharacterDeleter';
-import useCharacter from '../utilities/useCharacter';
+import { CharacterContext } from '../contextProviders/characterContext';
 
 function CharacterTab({ characters }) {
-    const [selectedCharacterID, setselectedCharacterID] = useState('');
+    // const [selectedCharacterID, setselectedCharacterID] = useState('');
 
     const [isModalDisplayed, setIsModalDisplayed] = useState(false);
     const [isDeleterDisplayed, setIsDeleterDisplayed] = useState(false);
 
-    const [testChar, setTestChar] = useCharacter({});
+    const { currentCharacter, setCurrentCharacter } =
+        useContext(CharacterContext);
 
-    console.log(`The current selected character is ${selectedCharacterID}`);
-    console.log(`testChar stuff`, testChar);
+    console.log(`The current selected character is ${currentCharacter?.name}`);
     return (
         <>
             <View style={styles.characterContainer}>
@@ -26,8 +26,7 @@ function CharacterTab({ characters }) {
                         return item.name;
                     }}
                     onSelect={(item) => {
-                        setselectedCharacterID(item._id);
-                        setTestChar(item);
+                        setCurrentCharacter(item);
                     }}
                     buttonTextAfterSelection={(item, index) => {
                         return item.name;
@@ -49,11 +48,11 @@ function CharacterTab({ characters }) {
                     />
                 </Pressable>
                 <Pressable
-                    disabled={selectedCharacterID === ''}
+                    disabled={currentCharacter === null}
                     style={{
                         ...styles.deleteButton,
                         backgroundColor:
-                            selectedCharacterID === '' ? '#5e5e5e' : '#d40000',
+                            currentCharacter === null ? '#5e5e5e' : '#d40000',
                     }}
                     onPress={() => {
                         setIsDeleterDisplayed(true);
@@ -73,7 +72,7 @@ function CharacterTab({ characters }) {
                 <CharacterDeleter
                     isDeleterDisplayed={isDeleterDisplayed}
                     setIsDeleterDisplayed={setIsDeleterDisplayed}
-                    selectedCharacterID={selectedCharacterID}
+                    selectedCharacterID={currentCharacter?._id}
                 />
             </View>
         </>

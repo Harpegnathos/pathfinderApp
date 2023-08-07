@@ -3,8 +3,17 @@ import { Feather } from '@expo/vector-icons';
 import { styles } from '../styleSheets/spellPreview.styles';
 import { CastTime } from './castTime';
 import { addSpellToCharacter } from '../utilities/dataHelper';
+import { useContext } from 'react';
+import { CharacterContext } from '../contextProviders/characterContext';
 
 function SpellPreview({ myModalFunc, setSpellID, spellList }) {
+    const { currentCharacter, setCurrentCharacter } =
+        useContext(CharacterContext);
+
+    console.log(
+        `The current selected character in spellPreview is ${currentCharacter?.name}`
+    );
+
     return (
         <>
             <View style={styles.previewContainer}>

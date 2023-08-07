@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CharacterTab } from '../components/characterTab';
 import { SpellPreview } from '../components/spellPreview';
 import { SpellDetailsCard } from '../components/spellDetailsCard';
@@ -6,6 +6,7 @@ import { ActivityIndicator, SafeAreaView, View } from 'react-native';
 import { styles } from '../styleSheets/homePage.styles';
 import { mapSpells } from '../utilities/mapSpells';
 import { getAllCharacters, getAllSpells } from '../utilities/dataHelper';
+import { CharacterContext } from '../contextProviders/characterContext';
 
 export default function SpellListView() {
     const [modalOpen, setModalOpen] = useState(false);
@@ -13,6 +14,10 @@ export default function SpellListView() {
 
     const [spells, setSpells] = useState([]);
     const [characters, setCharacters] = useState([]);
+    const [currentCharacter, setCurrentCharacter] = useState(null);
+
+    // const { currentCharacter, setCurrentCharacter } =
+    //     useContext(CharacterContext);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -23,6 +28,7 @@ export default function SpellListView() {
 
                 const characterList = await getAllCharacters();
                 setCharacters(characterList);
+                // setCurrentCharacter(characterList[0]);
             } catch (e) {
                 console.error(e);
             }
@@ -40,7 +46,9 @@ export default function SpellListView() {
     }
 
     return (
-        <>
+        <CharacterContext.Provider
+            value={{ currentCharacter, setCurrentCharacter }}
+        >
             <SafeAreaView style={styles.safeView}>
                 <CharacterTab characters={characters} />
                 <SpellDetailsCard
@@ -55,6 +63,6 @@ export default function SpellListView() {
                     spellList={spells}
                 />
             </SafeAreaView>
-        </>
+        </CharacterContext.Provider>
     );
 }
