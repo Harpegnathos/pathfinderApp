@@ -8,8 +8,6 @@ import { CharacterDeleter } from './CharacterDeleter';
 import { CharacterContext } from '../contextProviders/characterContext';
 
 function CharacterTab({ characters }) {
-    // const [selectedCharacterID, setselectedCharacterID] = useState('');
-
     const [isModalDisplayed, setIsModalDisplayed] = useState(false);
     const [isDeleterDisplayed, setIsDeleterDisplayed] = useState(false);
 

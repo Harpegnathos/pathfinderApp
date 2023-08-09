@@ -3,7 +3,6 @@ import { Feather } from '@expo/vector-icons';
 import { updateCharacterSpells } from '../utilities/dataHelper';
 import { useContext } from 'react';
 import { CharacterContext } from '../contextProviders/characterContext';
-import { ICharacter } from '../interfaces/iCharacter';
 
 function SpellAdder({ spellID }) {
     const { currentCharacter, setCurrentCharacter } =
@@ -67,9 +66,3 @@ function SpellAdder({ spellID }) {
 }
 
 export { SpellAdder };
-
-// {currentCharacter?.spellList.includes(spellID) ? (
-//     <Feather name="minus-square" size={24} color="#d40000" />
-// ) : (
-//     <Feather name="plus-square" size={24} />
-// )}

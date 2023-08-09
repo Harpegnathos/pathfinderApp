@@ -1,13 +1,9 @@
-import { View, ScrollView, Pressable, Text } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import { View, ScrollView, Text } from 'react-native';
 import { styles } from '../styleSheets/spellPreview.styles';
 import { CastTime } from './castTime';
-import { addSpellToCharacter } from '../utilities/dataHelper';
-import { useContext } from 'react';
-import { CharacterContext } from '../contextProviders/characterContext';
 import { SpellAdder } from './spellAdder';
 
-function SpellPreview({ myModalFunc, setSpellID, spellList }) {
+function SpellPreview({ spellList }) {
     return (
         <>
             <View style={styles.previewContainer}>

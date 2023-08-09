@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CharacterTab } from '../components/characterTab';
 import { SpellPreview } from '../components/spellPreview';
 import { SpellDetailsCard } from '../components/spellDetailsCard';
@@ -16,9 +16,6 @@ export default function SpellListView() {
     const [characters, setCharacters] = useState([]);
     const [currentCharacter, setCurrentCharacter] = useState(null);
 
-    // const { currentCharacter, setCurrentCharacter } =
-    //     useContext(CharacterContext);
-
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -28,7 +25,6 @@ export default function SpellListView() {
 
                 const characterList = await getAllCharacters();
                 setCharacters(characterList);
-                // setCurrentCharacter(characterList[0]);
             } catch (e) {
                 console.error(e);
             }
