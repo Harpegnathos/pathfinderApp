@@ -5,15 +5,9 @@ import { CastTime } from './castTime';
 import { addSpellToCharacter } from '../utilities/dataHelper';
 import { useContext } from 'react';
 import { CharacterContext } from '../contextProviders/characterContext';
+import { SpellAdder } from './spellAdder';
 
 function SpellPreview({ myModalFunc, setSpellID, spellList }) {
-    const { currentCharacter, setCurrentCharacter } =
-        useContext(CharacterContext);
-
-    console.log(
-        `The current selected character in spellPreview is ${currentCharacter?.name}`
-    );
-
     return (
         <>
             <View style={styles.previewContainer}>
@@ -67,7 +61,7 @@ function SpellPreview({ myModalFunc, setSpellID, spellList }) {
                                                 />
                                                 {` ${item.components}`}
                                             </Text>
-                                            <Pressable
+                                            {/* <Pressable
                                                 onPress={() => {
                                                     setSpellID(item.id);
                                                     // addSpellToCharacter(,item.id);
@@ -87,7 +81,8 @@ function SpellPreview({ myModalFunc, setSpellID, spellList }) {
                                                         size={24}
                                                     />
                                                 )}
-                                            </Pressable>
+                                            </Pressable> */}
+                                            <SpellAdder spellID={item.id} />
                                         </View>
                                     </View>
                                 </View>
