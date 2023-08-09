@@ -7,7 +7,6 @@ import { createCharacter } from '../utilities/dataHelper';
 
 function CharacterCreator({ isModalDisplayed, setIsModalDisplayed }) {
     const [textValue, setTextValue] = useState('');
-    console.log(textValue);
 
     return (
         <Modal

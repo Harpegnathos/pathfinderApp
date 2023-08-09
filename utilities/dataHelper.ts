@@ -47,7 +47,6 @@ async function updateCharacterSpells(spellIDs, characterID) {
             body: JSON.stringify(data),
         });
         result = await response.json();
-        console.log(result);
     } catch (e) {
         console.error(e);
     }

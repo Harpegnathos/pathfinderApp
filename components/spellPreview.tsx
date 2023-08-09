@@ -61,27 +61,6 @@ function SpellPreview({ myModalFunc, setSpellID, spellList }) {
                                                 />
                                                 {` ${item.components}`}
                                             </Text>
-                                            {/* <Pressable
-                                                onPress={() => {
-                                                    setSpellID(item.id);
-                                                    // addSpellToCharacter(,item.id);
-                                                    console.log(item.name);
-                                                }}
-                                            >
-                                                {item.name ===
-                                                'Aberrant Form' ? (
-                                                    <Feather
-                                                        name="minus-square"
-                                                        size={24}
-                                                        color="#d40000"
-                                                    />
-                                                ) : (
-                                                    <Feather
-                                                        name="plus-square"
-                                                        size={24}
-                                                    />
-                                                )}
-                                            </Pressable> */}
                                             <SpellAdder spellID={item.id} />
                                         </View>
                                     </View>

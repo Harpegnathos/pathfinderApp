@@ -16,7 +16,6 @@ function CharacterTab({ characters }) {
     const { currentCharacter, setCurrentCharacter } =
         useContext(CharacterContext);
 
-    console.log(`The current selected character is ${currentCharacter?.name}`);
     return (
         <>
             <View style={styles.characterContainer}>
