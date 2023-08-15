@@ -7,11 +7,11 @@ import { styles } from '../styleSheets/homePage.styles';
 import { mapSpells } from '../utilities/mapSpells';
 import { getAllCharacters, getAllSpells } from '../utilities/dataHelper';
 import { CharacterContext } from '../contextProviders/characterContext';
+import { FilterBar } from '../components/filterBar';
 
 export default function SpellListView() {
     const [modalOpen, setModalOpen] = useState(false);
     const [spellID, setSpellID] = useState('');
-
     const [spells, setSpells] = useState([]);
     const [characters, setCharacters] = useState([]);
     const [currentCharacter, setCurrentCharacter] = useState(null);
@@ -22,7 +22,17 @@ export default function SpellListView() {
                 const fullSpellList = await getAllSpells();
                 const mappedSpells = mapSpells(fullSpellList);
                 setSpells(mappedSpells);
+            } catch (e) {
+                console.error(e);
+            }
+        };
 
+        fetchData();
+    }, []);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
                 const characterList = await getAllCharacters();
                 setCharacters(characterList);
             } catch (e) {
@@ -31,7 +41,8 @@ export default function SpellListView() {
         };
 
         fetchData();
-    }, []);
+        console.log('fetched characters');
+    }, [currentCharacter]);
 
     if (spells.length === 0) {
         return (
@@ -47,17 +58,14 @@ export default function SpellListView() {
         >
             <SafeAreaView style={styles.safeView}>
                 <CharacterTab characters={characters} />
+                <FilterBar />
                 <SpellDetailsCard
                     displayModal={modalOpen}
                     myModalFunc={setModalOpen}
                     spellID={spellID}
                     spellList={spells}
                 />
-                <SpellPreview
-                    myModalFunc={setModalOpen}
-                    setSpellID={setSpellID}
-                    spellList={spells}
-                />
+                <SpellPreview spellList={spells} />
             </SafeAreaView>
         </CharacterContext.Provider>
     );

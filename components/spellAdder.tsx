@@ -9,7 +9,7 @@ function SpellAdder({ spellID }) {
         useContext(CharacterContext);
 
     if (currentCharacter === null) {
-        return null;
+        return <Feather name="plus-square" size={24} opacity={0.2} />;
     }
 
     if (currentCharacter.spellList.includes(spellID)) {
