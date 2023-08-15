@@ -10,7 +10,6 @@ import { CharacterContext } from '../contextProviders/characterContext';
 function CharacterTab({ characters }) {
     const [isModalDisplayed, setIsModalDisplayed] = useState(false);
     const [isDeleterDisplayed, setIsDeleterDisplayed] = useState(false);
-
     const { currentCharacter, setCurrentCharacter } =
         useContext(CharacterContext);
 

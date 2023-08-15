@@ -4,6 +4,7 @@ const styles = StyleSheet.create({
     safeView: {
         paddingTop: 25,
         flex: 1,
+        backgroundColor: '#fde8c7',
     },
     container: {
         flex: 1,
