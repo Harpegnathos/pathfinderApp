@@ -1,6 +1,7 @@
+import { IMappedSpell } from '../interfaces/iMappedSpell';
 import { ISpell } from '../interfaces/iSpell';
 
-function mapSpells(spellList) {
+function mapSpells(spellList): IMappedSpell[] {
     const spells = (spellList as any).map((spell: ISpell) => {
         const componentArray = [];
         if (spell.system.components.material) {

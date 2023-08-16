@@ -13,6 +13,7 @@ export default function SpellListView() {
     const [modalOpen, setModalOpen] = useState(false);
     const [spellID, setSpellID] = useState('');
     const [spells, setSpells] = useState([]);
+    const [filteredSpells, setFilteredSpells] = useState([]);
     const [characters, setCharacters] = useState([]);
     const [currentCharacter, setCurrentCharacter] = useState(null);
 
@@ -22,6 +23,7 @@ export default function SpellListView() {
                 const fullSpellList = await getAllSpells();
                 const mappedSpells = mapSpells(fullSpellList);
                 setSpells(mappedSpells);
+                setFilteredSpells(mappedSpells);
             } catch (e) {
                 console.error(e);
             }
@@ -41,7 +43,6 @@ export default function SpellListView() {
         };
 
         fetchData();
-        console.log('fetched characters');
     }, [currentCharacter]);
 
     if (spells.length === 0) {
@@ -58,14 +59,19 @@ export default function SpellListView() {
         >
             <SafeAreaView style={styles.safeView}>
                 <CharacterTab characters={characters} />
-                <FilterBar />
+                <FilterBar
+                    spells={spells}
+                    filteredSpells={filteredSpells}
+                    setFilteredSpells={setFilteredSpells}
+                    currentCharacter={currentCharacter}
+                />
                 <SpellDetailsCard
                     displayModal={modalOpen}
                     myModalFunc={setModalOpen}
                     spellID={spellID}
                     spellList={spells}
                 />
-                <SpellPreview spellList={spells} />
+                <SpellPreview spellList={filteredSpells} />
             </SafeAreaView>
         </CharacterContext.Provider>
     );

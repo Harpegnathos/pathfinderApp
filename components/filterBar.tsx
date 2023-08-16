@@ -1,7 +1,15 @@
 import { View, Text, Pressable } from 'react-native';
 import { styles } from '../styleSheets/filterBar.styles';
+import { IMappedSpell } from '../interfaces/iMappedSpell';
 
-function FilterBar() {
+function FilterBar({
+    spells,
+    filteredSpells,
+    setFilteredSpells,
+    currentCharacter,
+}) {
+    console.log('currentCharacter: ', currentCharacter);
+    console.log('filteredSpells: ', filteredSpells);
     return (
         <>
             <View style={styles.dropdown}>
@@ -11,7 +19,15 @@ function FilterBar() {
                 <Pressable
                     style={styles.filterButton}
                     onPress={() => {
-                        console.log('In Spellbook Press');
+                        if (!currentCharacter) {
+                            return;
+                        }
+
+                        setFilteredSpells(
+                            spells.filter((spell: IMappedSpell) =>
+                                currentCharacter.spellList.includes(spell.id)
+                            )
+                        );
                     }}
                 >
                     <Text style={styles.buttonText}>In Spellbook</Text>
@@ -19,10 +35,10 @@ function FilterBar() {
                 <Pressable
                     style={styles.filterButton}
                     onPress={() => {
-                        console.log('Clear All Press');
+                        setFilteredSpells(spells);
                     }}
                 >
-                    <Text style={styles.buttonText}>Clear All</Text>
+                    <Text style={styles.buttonText}>Clear Filters</Text>
                 </Pressable>
             </View>
         </>
