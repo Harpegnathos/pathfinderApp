@@ -4,9 +4,6 @@ import { CastTime } from './castTime';
 import { SpellAdder } from './spellAdder';
 
 function SpellPreview({ spellList }) {
-    // if (spellList.length === 0) {
-    //     return <></>;
-    // }
     return (
         <View style={styles.previewContainer}>
             <ScrollView>

@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
     previewContainer: {
         flex: 1,
         backgroundColor: '#fde8c7',
-        alignItems: 'center',
+        alignItems: 'stretch',
         justifyContent: 'center',
         paddingHorizontal: 10,
         width: '100%',
@@ -44,13 +44,13 @@ const styles = StyleSheet.create({
     },
     traitBoxes: {
         backgroundColor: '#751000',
-        borderColor: '#c79c02',
-        borderWidth: 3,
+        borderRadius: 10,
         textTransform: 'uppercase',
+        alignContent: 'center',
         textAlign: 'center',
         color: 'white',
-        paddingHorizontal: 5,
-        paddingTop: 3,
+        paddingHorizontal: 6,
+        paddingVertical: 3,
     },
     textBox: {
         display: 'flex',

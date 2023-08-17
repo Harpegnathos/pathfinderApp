@@ -58,7 +58,11 @@ export default function SpellListView() {
             value={{ currentCharacter, setCurrentCharacter }}
         >
             <SafeAreaView style={styles.safeView}>
-                <CharacterTab characters={characters} />
+                <CharacterTab
+                    characters={characters}
+                    setFilteredSpells={setFilteredSpells}
+                    spells={spells}
+                />
                 <FilterBar
                     spells={spells}
                     filteredSpells={filteredSpells}

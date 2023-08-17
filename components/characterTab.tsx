@@ -7,7 +7,7 @@ import { CharacterCreator } from './CharacterCreator';
 import { CharacterDeleter } from './CharacterDeleter';
 import { CharacterContext } from '../contextProviders/characterContext';
 
-function CharacterTab({ characters }) {
+function CharacterTab({ characters, setFilteredSpells, spells }) {
     const [isModalDisplayed, setIsModalDisplayed] = useState(false);
     const [isDeleterDisplayed, setIsDeleterDisplayed] = useState(false);
     const { currentCharacter, setCurrentCharacter } =
@@ -23,6 +23,7 @@ function CharacterTab({ characters }) {
                     }}
                     onSelect={(item) => {
                         setCurrentCharacter(item);
+                        setFilteredSpells(spells);
                     }}
                     buttonTextAfterSelection={(item, index) => {
                         return item.name;
