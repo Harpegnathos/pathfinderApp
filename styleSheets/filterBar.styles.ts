@@ -4,6 +4,11 @@ const styles = StyleSheet.create({
     dropdown: {
         flexDirection: 'row',
         justifyContent: 'center',
+        paddingHorizontal: 10,
+        paddingBottom: 10,
+    },
+    accordion: {
+        backgroundColor: '#fbd692',
     },
     headerFont: {
         fontWeight: 'bold',
@@ -12,11 +17,11 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         paddingBottom: 10,
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        backgroundColor: '#fde8c7',
+        justifyContent: 'space-around',
+        backgroundColor: '#fbd692',
     },
     filterButton: {
-        backgroundColor: '#fbd692',
+        backgroundColor: '#fde8c7',
         borderRadius: 20,
         alignSelf: 'center',
         padding: 10,

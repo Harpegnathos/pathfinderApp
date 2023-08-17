@@ -19,6 +19,7 @@
     "prettier": "^2.8.7",
     "react": "18.2.0",
     "react-native": "0.71.8",
+    "react-native-accordion-list-view": "^2.0.1",
     "react-native-mmkv": "^2.10.1",
     "react-native-select-dropdown": "^3.3.4",
     "typescript": "^4.9.4"
