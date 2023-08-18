@@ -2,14 +2,16 @@ import { Modal, Pressable, TextInput, View, Text } from 'react-native';
 import { styles } from '../styleSheets/characterTab.styles';
 import { MaterialIcons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { deleteCharacter } from '../utilities/dataHelper';
+import { CharacterContext } from '../contextProviders/characterContext';
 
 function CharacterDeleter({
     isDeleterDisplayed,
     setIsDeleterDisplayed,
     selectedCharacterID,
 }) {
+    const { setCurrentCharacter } = useContext(CharacterContext);
     const [textValue, setTextValue] = useState('');
 
     return (
@@ -46,6 +48,7 @@ function CharacterDeleter({
                                     setIsDeleterDisplayed(false);
                                 };
                                 sendDeleteRequest();
+                                setCurrentCharacter(null);
                             }}
                         >
                             <Text style={styles.deleteText}>

@@ -2,11 +2,13 @@ import { Modal, Pressable, TextInput, View, Text } from 'react-native';
 import { styles } from '../styleSheets/characterTab.styles';
 import { MaterialIcons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { createCharacter } from '../utilities/dataHelper';
+import { CharacterContext } from '../contextProviders/characterContext';
 
 function CharacterCreator({ isModalDisplayed, setIsModalDisplayed }) {
     const [textValue, setTextValue] = useState('');
+    const { setCurrentCharacter } = useContext(CharacterContext);
 
     return (
         <Modal
@@ -44,11 +46,22 @@ function CharacterCreator({ isModalDisplayed, setIsModalDisplayed }) {
                             }}
                             onPress={() => {
                                 const sendCharacterName = async () => {
-                                    await createCharacter(textValue);
+                                    const characterModel =
+                                        await createCharacter(textValue);
                                     setTextValue('');
                                     setIsModalDisplayed(false);
+                                    return characterModel;
                                 };
-                                sendCharacterName();
+                                let characterModel;
+                                sendCharacterName().then((res) => {
+                                    characterModel = res;
+
+                                    setCurrentCharacter({
+                                        _id: characterModel._id,
+                                        name: characterModel.name,
+                                        spellList: [],
+                                    });
+                                });
                             }}
                         >
                             <Text

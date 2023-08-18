@@ -13,6 +13,14 @@ function CharacterTab({ characters, setFilteredSpells, spells }) {
     const { currentCharacter, setCurrentCharacter } =
         useContext(CharacterContext);
 
+    const defaultButtonText = 'Select Character';
+
+    // if (!currentCharacter) {
+    //     defaultButtonText = 'select character';
+    // } else {
+    //     defaultButtonText = currentCharacter?.name;
+    // }
+
     return (
         <>
             <View style={styles.characterContainer}>
@@ -26,9 +34,11 @@ function CharacterTab({ characters, setFilteredSpells, spells }) {
                         setFilteredSpells(spells);
                     }}
                     buttonTextAfterSelection={(item, index) => {
-                        return item.name;
+                        return currentCharacter
+                            ? currentCharacter.name
+                            : defaultButtonText;
                     }}
-                    defaultButtonText="select character"
+                    defaultButtonText={defaultButtonText}
                     buttonStyle={styles.characterSelector}
                 />
                 <Pressable

@@ -17,8 +17,7 @@ function FilterBar({
             }
         }
     }, []);
-    console.log('currentCharacter: ', currentCharacter);
-    console.log('filteredSpells: ', filteredSpells);
+
     return (
         <>
             <View style={styles.dropdown}>
@@ -64,7 +63,6 @@ function FilterBar({
                     )}
                     animationDuration={300}
                     isOpen={false}
-                    onPress={(isOpen) => console.log(isOpen)}
                 />
             </View>
         </>
